@@ -246,7 +246,7 @@ html , body{
     padding-left: 15px;
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: .5px;
+    xletter-spacing: .5px;
     font-weight: bold;
     font-size: 11px;
     margin-bottom: 0;
@@ -493,7 +493,7 @@ body .container.body .right_col {
 body {
     color: #73879C;
     background: #2A3F54;
-    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    font-family: "Open Sans","Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
     font-weight: 400;
     line-height: 1.471
@@ -2171,8 +2171,8 @@ span.section {
 }
 .form-control {
     border-radius: 0;
-    width: 100%
-    
+    width: 100%;
+    background-color:#eee !important;
 }
 .form-horizontal .control-label {
     padding-top: 8px
@@ -2314,7 +2314,7 @@ select.parsley-error {
     font-weight: bold;
     color: #bbb;
     text-transform: uppercase;
-    letter-spacing: 1px
+    xletter-spacing: 1px
 }
 .autocomplete-suggestions {
     border: 1px solid #e4e4e4;
@@ -3496,7 +3496,7 @@ form:after {
 }
 .login_content h1 {
     font: normal 25px Helvetica, Arial, sans-serif;
-    letter-spacing: -0.05em;
+    xletter-spacing: -0.05em;
     line-height: 20px;
     margin: 10px 0 30px
 }
