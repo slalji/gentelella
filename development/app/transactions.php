@@ -21,7 +21,22 @@
                     <ul>
                     <div class="pull-right tableTools-container">
                       <div class="dt-buttons btn-overlap btn-group">
-                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-default btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""><span><i class="fa fa-eye-slash bigger-110 blue"></i> <span class="hidden">Show/hide columns</span></span></a><a class="dt-button buttons-copy buttons-html5 btn btn-white btn-default btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""><span><i class="fa fa-copy bigger-110 pink"></i> <span class="hidden">Copy to clipboard</span></span></a><a class="dt-button buttons-csv buttons-html5 btn btn-white btn-default btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""><span><i class="fa fa-file-excel-o bigger-110 green"></i> <span class="hidden">Export to CSV</span></span></a><a class="dt-button buttons-print btn btn-white btn-default btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""><span><i class="fa fa-print bigger-110 grey"></i> <span class="hidden">Print</span></span></a></div></div>
+                        <a class="dt-button buttons-collection buttons-colvis btn btn-white 
+                        btn-default btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" 
+                        title=""><span><i class="fa fa-eye-slash bigger-110 blue"></i> 
+                        <span class="hidden">Show/hide columns</span></span></a>
+                        <a class="dt-button buttons-copy buttons-html5 btn btn-white btn-default btn-bold" 
+                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""><span>
+                          <i class="fa fa-copy bigger-110 pink"></i> <span class="hidden">Copy to clipboard
+
+                          </span></span></a><a class="dt-button buttons-csv buttons-html5 btn btn-white 
+                          btn-default btn-bold" tabindex="0" aria-controls="dynamic-table" 
+                          data-original-title="" title=""><span><i class="fa fa-file-excel-o bigger-110 green">
+
+                          </i> <span class="hidden">Export to CSV</span></span
+                          a><a class="dt-button buttons-print btn btn-white btn-default btn-bold"
+                           tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""><span>
+                             <i class="fa fa-print bigger-110 grey"></i> <span class="hidden">Print</span></span></a></div></div>
                     </ul>
                     <div class="clearfix"></div>
                   </div>

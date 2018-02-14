@@ -51,11 +51,9 @@ $q_cols = explode(',', $exp2[0]);
 
 $where = " where " . $where;
 if( !empty($requestData['columns'][0]['search']['value']) ){ 
-   // print_r($requestData['columns'][0]['search']['value']);
     $range = explode('|', $requestData['columns'][0]['search']['value']); 
     $start = trim($range[0]); //name
     $end = trim($range[1]); //name
-    //print_r($start .$end);
     $where.=" AND fulltimestamp >= '".$start."' AND fulltimestamp <= ('" .$end. "' + INTERVAL 1 DAY) ";
 }
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter

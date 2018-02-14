@@ -11,6 +11,7 @@ jQuery(function($) {
         $('#dynamic-table').DataTable( {
             "processing": true,
             "serverSide": true,
+            "lengthMenu": [ [10, 50, 100, 150, 350, 500, 750, 1000],  [10, 50, 100, 150, 350, 500, 750, 1000] ],
             "order": [[ 1, 'desc' ]],
 
             bAutoWidth: false,
@@ -19,10 +20,9 @@ jQuery(function($) {
                 data: {section: section, cols: cols},
                 type: "post"  // method  , by default get
 
-            },
-            "dom": '<"toolbar">frtip'
+            },     "dom": '<"toolbar">lfrtip'
         } );
-    $("div.toolbar").html('<div id="reportrange" class="pull-left" style="border-radus:5px ;background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 30%"> <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;<span id="date-text"></span> <b class="caret"></b></div>');
+    $("div.toolbar").html('<div class="dataTables_length"></div><div id="reportrange" class="pull-left" style="border-radus:5px ;background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 30%"> <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;<span id="date-text"></span> <b class="caret"></b></div>');
 
 
     //$('#my-table_filter').hide();
