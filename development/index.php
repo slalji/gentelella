@@ -115,7 +115,9 @@
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="../vendors/bootstrap-daterangepicker/daterangepicker.css" />
-
+<!-- jQuery Smart Wizard -->
+<script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+    <
   
     <script src="./build/js/custom.min.js"></script>
     <script src="./app/js/transactions.js"></script>
