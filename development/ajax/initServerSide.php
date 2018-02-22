@@ -16,18 +16,12 @@ $section = $_REQUEST['section'];
 $where = '';
 $max = 11;
 
-$sql = "";
-// get initial data 
-if( empty($requestData['columns'][0]['search']['value']) ){ 
-	$sql = "SELECT transactions.id, fulltimestamp, terminal, members.fullname, members.ip_address, utility_type, amount,utility_reference, msisdn, reference, transid, result, message from transactions join members on members.id = transactions.id ";
-	$query=mysqli_query($conn, $sql) or die(mysqli_error($conn).' '.$sql);
-	$totalData = mysqli_num_rows($query);
-	$totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
-}
-// initial of 10 rows
+$sql = "SELECT transactions.id, fulltimestamp, terminal, members.fullname, members.ip_address, utility_type, amount,utility_reference, msisdn, reference, transid, result, message from transactions join members on members.id = transactions.id ";
+	// initial of 10 rows
 $where = " where members.id < ".$max ;
+$totalData = 10;
+$totalFiltered = $totalData;
 
-//else request search criteria
 if( !empty($requestData['columns'][0]['search']['value']) ){ 
 	//print_r($requestData);
 	$where = ' WHERE transactions.id = members.id' ;
@@ -71,15 +65,18 @@ if( !empty($requestData['columns'][0]['search']['value']) ){
    //print_r($sql);
    $query2=mysqli_query($conn, $sql) or die(mysqli_error($conn).' '.$sql);
    $totalData = mysqli_num_rows($query2); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-   $totalFiltered = ($totalData);}
+   $totalFiltered = ($totalData);
+}
+
+
 
 
 $sql.= " ORDER BY fulltimestamp   ".$requestData['order'][0]['dir']."";
 //Before adding limit find num_rows
 
 $sql.= "  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
-/* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */
 $query=mysqli_query($conn, $sql) or die(mysqli_error($conn).' '.$sql);
+
 $rows = array();
 $data = array();
 while( $rows=mysqli_fetch_assoc($query) ) {  // preparing an array

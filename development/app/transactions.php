@@ -1,7 +1,7 @@
 <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div xclass="x_panel">
-                  <div xclass="x_title ">
+                  <div class="x_title ">
                     <h2>NBC Agency Transactions</h2>
                     <!--<ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -40,9 +40,10 @@
                     </ul>-->
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <div xclass="x_content">
                     <p class="text-muted font-13 m-b-30">
-                       
+                    <div class="list">
+                      
                    </p>
                     <table id="dynamic-table" class="table table-striped table-bordered table-condensed">
                       <thead>

@@ -1,7 +1,9 @@
 $( document ).ready(function() {
     
    $('#reportrange').hide();
-   $('#dataTables_filter input').hide();
+   $('#dataTables_filter').hide();
+   //$("td div").tooltip({container:'body'});  
+  
    
  
 });
@@ -29,7 +31,7 @@ jQuery(function($) {
 
             bAutoWidth: false,
             ajax: {
-                url: "ajax/getServerSide.php", // json datasource
+                url: "ajax/initServerSide.php", // json datasource
                 data: {section: section, cols: cols},
                 type: "post"  // method  , by default get
 
@@ -49,12 +51,16 @@ jQuery(function($) {
                    searchable: true,
                     orderable: false
                 },
+                {
+                    searchable: true,
+                     orderable: false
+                 },
                 
-                ,
                 {
                     "mRender": function ( data, type, row ) {
-                        return '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="'+data+'" ><i class="fa fa-location-arrow fa-1x "></i></button> ';}
-                    ,
+                       // return ' <a data-toggle="tooltip-address" class="btn btn-secondary" data-html="true" title="'+data+'"><i class="fa fa-location-arrow fa-2x "></i></a> ';
+                       return '<span data-toggle="tooltip" title="' + data + '"><i class="fa fa-location-arrow fa-2x "></i></span>';
+                },
 
                     searchable: false,
                     orderable: false
@@ -95,8 +101,9 @@ jQuery(function($) {
                 ,
                 {
                     "mRender": function ( data, type, row ) {
-                        return '<a data-toggle="tooltip" class="btn btn-secondary" data-html="true" title="'+data+'"><i class="fa fa-info-circle fa-2x "></i></a>';}
-                    ,
+                        //return '<a data-toggle="tooltip-msg" class="btn btn-secondary" data-html="true" title="'+data+'"><i class="fa fa-info-circle fa-2x "></i></a>';
+                        return '<span data-toggle="tooltip" title="' + data + '"><i class="fa fa-info-circle fa-2x "></i></span>';
+                },
 
                     searchable: false,
                     orderable: false
@@ -106,10 +113,13 @@ jQuery(function($) {
             ],
         } );
     $("div.toolbar").html('<div class="dataTables_length"></div><div><a href="#" id="advsearch" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Advanced Search</a><div>');
-
+/* Apply the tooltips */
+myTable.on('draw.dt', function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
     //$('#my-table_filter').hide();
-
+/*
     $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
 
     new $.fn.dataTable.Buttons( myTable, {
@@ -175,7 +185,7 @@ jQuery(function($) {
     });
 
     ////
-
+*/
     setTimeout(function() {
         $($('.tableTools-container')).find('a.dt-button').each(function() {
             var div = $(this).find(' > div').first();

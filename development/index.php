@@ -21,7 +21,7 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <?php include "layout/footer_buttons.php"?>
+            <?php //include "layout/footer_buttons.php"?>
             <!-- /menu footer buttons -->
           </div>
         </div>
@@ -85,6 +85,7 @@
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+   
     <!-- FastClick -->
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
@@ -116,11 +117,12 @@
     
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+   
     <link rel="stylesheet" type="text/css" href="../vendors/bootstrap-daterangepicker/daterangepicker.css" />
 <!-- jQuery Smart Wizard -->
 <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script><!-- jQuery Smart Wizard -->
+<!-- jQuery Galic Persistant to localstorage -->
 <script src="../vendors/garlicjs/dist/garlic.min.js"></script>
-
       
     <script src="./build/js/custom.js"></script>
     <script src="./app/js/transactions.js"></script>

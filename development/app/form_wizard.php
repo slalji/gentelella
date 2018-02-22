@@ -105,10 +105,10 @@
               <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div id="gender" class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                  <label class="btn btn-default" data-toggle-class="btn btn-primary" data-toggle-passive-class="btn-default">
                     <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
                   </label>
-                  <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                  <label class="btn btn-default" data-toggle-class="btn btn-primary" data-toggle-passive-class="btn-default">
                     <input type="radio" name="gender" value="female"> Female
                   </label>
                 </div>
@@ -122,7 +122,7 @@
         <div id="step-2">
           <h2 class="StepTitle">Step 2 Contact</h2>
           
-          <form class="form-horizontal form-label-left">
+          <form class="form-horizontal form-label-left"  data-persist="garlic">
 
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address<span class="required">*</span>
@@ -156,7 +156,7 @@
         </div>
         <div id="step-3">
           <h2 class="StepTitle">Step 3 Relation Details</h2>
-           <form class="form-horizontal form-label-left">
+           <form class="form-horizontal form-label-left"  data-persist="garlic">
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Contact Name <span class="required">*</span>
@@ -185,7 +185,7 @@
         </div>
         <div id="step-4">
           <h2 class="StepTitle">Step 4 Employment</h2>
-          <form class="form-horizontal form-label-left">
+          <form class="form-horizontal form-label-left"  data-persist="garlic">
 
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nssf">NSSF No. <span class="required">*</span>
@@ -215,7 +215,7 @@
                   <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                     <input type="radio" name="emp_terms" value="permnent"> &nbsp; Permnent &nbsp;
                   </label>
-                  <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                  <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                     <input type="radio" name="emp_terms" value="temporary"> Temporary / Contract
                   </label>
                 </div>
