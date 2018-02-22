@@ -351,7 +351,7 @@ html , body{
     position: fixed
 }
 body .container.body .right_col {
-    background: #F7F7F7
+    background: #fff;//F7F7F7
 }
 .nav-md .container.body .right_col {
     padding: 10px 20px 0;
@@ -844,7 +844,8 @@ a:focus {
     background-color: transparent
 }
 .top_search {
-    padding: 0
+    padding: 0;
+    display: none;
 }
 .top_search .form-control {
     border-right: 0;
@@ -1415,7 +1416,7 @@ tfoot input {
     color: #444
 }
 tfoot input.search_init {
-    color: #999
+    color: #999;
 }
 td.group {
     background-color: #d1cfd0;
@@ -4254,3 +4255,34 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: #ffff !important;
 }
 /** /bootstrap-datetimepicker **/
+
+.dataTables_wrapper .dataTables_processing {
+    background-color:#f5d5d5;
+    color:red;
+    padding-bottom:30px;
+    border:1px solid red;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+}
+/*.dataTables_filter {
+    display: none; 
+    }*/
+
+.tooltip-inner {
+    padding:10px !important;
+    font-size: 14px !important;
+    background: #7abcff !important; 
+    background: -webkit-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); 
+    background:    -moz-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); 
+    background:   linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); 
+    color: #fff;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+.tooltip.top .tooltip-arrow {
+    border-top-color: #7abcff;
+}
+.red-tooltip + .tooltip > .tooltip-inner {background-color: #f00;}
+
+

@@ -69,7 +69,7 @@
         </ul>
         <div id="step-1">
         <h2 class="StepTitle">Step 1 Personal</h2>
-          <form class="form-horizontal form-label-left">
+          <form class="form-horizontal form-label-left" data-persist="garlic">
 
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fullname">Full Name <span class="required">*</span>
@@ -93,7 +93,7 @@
                   <option value="manager">MANAGER</option>
                   <option value="supervisor">SUPERVISOR</option>
                   <option value="technician">TECHNICIAN</option>
-                  <option value="forman">FOREMAN<</option>
+                  <option value="forman">FOREMAN</option>
                   <option value="engineer">ENGINEER</option>
                   <option value="skilled_labour">SKILLED LABOURER</option>
                   <option value="unskilled_labour">UNSKILLED LABOURER</option>
@@ -128,26 +128,26 @@
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address<span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="address" required="required" class="form-control col-md-7 col-xs-12">
+                <input type="text" id="address" required="required" class="form-control col-md-7 col-xs-12" placeholder="street, area, city">
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email<span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                <input type="text" id="email" name="email" required="required" placeholder="your@emailaddress2018.com" class="form-control col-md-7 col-xs-12">
               </div>
             </div>
             <div class="form-group">
               <label for="phone" class="control-label col-md-3 col-sm-3 col-xs-10">Phone<span class="required">*</span></label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="phone" class="form-control col-md-7 col-xs-12" type="text" name="phone" require>
+                <input id="phone" class="form-control col-md-7 col-xs-12" type="text" name="phone" require data-mask="+255 000 000 000"  placeholder="+255 000 000 000">
               </div>
             </div>
             <div class="form-group">
               <label for="phone2" class="control-label col-md-3 col-sm-3 col-xs-10">Phone2</label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="phone2" class="form-control col-md-7 col-xs-12" type="text" name="phone2">
+                <input id="phone2" class="form-control col-md-7 col-xs-12" type="text" name="phone2"data-mask="+255 000 000 000"  placeholder="+255 000 000 000">
               </div>
             </div>
 
@@ -175,7 +175,7 @@
               <div class="form-group">
                 <label for="contact_phone" class="control-label col-md-3 col-sm-3 col-xs-12">Contact Phone</label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input id="contact_phone" class="form-control col-md-7 col-xs-12" type="text" name="contact_phone">
+                  <input id="contact_phone" class="form-control col-md-7 col-xs-12" type="text" name="contact_phone" placeholder="+255 000 000 000"  data-mask="+255 000 000 000">
                 </div>
               </div>
               
@@ -225,7 +225,13 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="contract_period">Employment Contract Period</label>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="contract_period"  class="form-control col-md-7 col-xs-12">
+                  <select  id="contract_period" name="contract_period"  class="form-control col-md-7 col-xs-12">
+                    <option value="">--Choose--</option>
+                      <option value="days">Days (1-30)</option>
+                      <option value="weeks">Weeks (1-4)</option>
+                      <option value="days">Months (1-12)</option>
+                      <option value="days">Yearly (1)</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">

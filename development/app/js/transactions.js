@@ -1,16 +1,29 @@
 $( document ).ready(function() {
-
-
+    
+   $('#reportrange').hide();
+   $('#dataTables_filter input').hide();
+   
+ 
 });
+
+$('#check-date').change(function(){
+    if($(this).prop("checked")) {
+      $('#reportrange').show();
+    } else {
+      $('#reportrange').hide();
+    }
+  });
 jQuery(function($) {
+  
     //initiate dataTables plugin
     var section = 'transactions';
-    var cols= 'id, fulltimestamp, terminal, fullname,  address, utility_type, amount,utility, msisdn, reference, transid, result, message';
+    var cols= 'id, fulltimestamp, terminal, fullname,  address, utility_type, amount,utility_reference, msisdn, reference, transid, result';
 
     var myTable =
         $('#dynamic-table').DataTable( {
             "processing": true,
             "serverSide": true,
+            "searchDelay": 5000,
             "lengthMenu": [ [10, 50, 100, 150, 350, 500, 750, 1000],  [10, 50, 100, 150, 350, 500, 750, 1000] ],
             "order": [[ 1, 'desc' ]],
 
@@ -20,9 +33,79 @@ jQuery(function($) {
                 data: {section: section, cols: cols},
                 type: "post"  // method  , by default get
 
-            },     "dom": '<"toolbar">lfrtip'
+            },
+            
+            "dom": '<"toolbar">lfrtip',
+            columns: [
+                {
+                    searchable: false,
+                    orderable: false,
+                },
+                {
+                    searchable: false,
+                    orderable: false
+                },
+                {
+                   searchable: true,
+                    orderable: false
+                },
+                
+                ,
+                {
+                    "mRender": function ( data, type, row ) {
+                        return '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="'+data+'" ><i class="fa fa-location-arrow fa-1x "></i></button> ';}
+                    ,
+
+                    searchable: false,
+                    orderable: false
+                },
+                {
+                    searchable: true,
+                     orderable: false
+                 },
+               
+                {
+                    searchable: true,
+                    orderable: false
+                },
+                {
+                    searchable: true,
+                    orderable: false
+                }
+                ,
+                {
+                    searchable: true,
+                    orderable: false
+                }
+                ,
+                {
+                    searchable: true,
+                    orderable: false
+                }
+                ,
+                {
+                    searchable: true,
+                    orderable: false
+                }
+                ,
+                {
+                    searchable: true,
+                    orderable: false
+                }
+                ,
+                {
+                    "mRender": function ( data, type, row ) {
+                        return '<a data-toggle="tooltip" class="btn btn-secondary" data-html="true" title="'+data+'"><i class="fa fa-info-circle fa-2x "></i></a>';}
+                    ,
+
+                    searchable: false,
+                    orderable: false
+                }
+                 
+               
+            ],
         } );
-    $("div.toolbar").html('<div class="dataTables_length"></div><div id="reportrange" class="pull-left" style="border-radus:5px ;background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 30%"> <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;<span id="date-text"></span> <b class="caret"></b></div>');
+    $("div.toolbar").html('<div class="dataTables_length"></div><div><a href="#" id="advsearch" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Advanced Search</a><div>');
 
 
     //$('#my-table_filter').hide();
@@ -121,25 +204,41 @@ jQuery(function($) {
         return 'left';
     }
 
-// Date range script - Start of the sscript
-    $("#reportrange").daterangepicker({
-        autoUpdateInput: false,
-        locale: {
-            "cancelLabel": "Clear"
-        }
-    });
+    
+    var start = moment().subtract(14, 'days');
+    var end = moment();
 
+    function cb(start, end) {
+       
+       $('#reportrange span').html(start.format('YYYY-MM-DD') + ' | ' + end.format('YYYY-MM-DD'));
+    }
+
+    $('#reportrange').daterangepicker({
+        startDate: start,
+       endDate: end,
+        "autoUpdateInput": false, 
+        "dateLimit": {
+            "days": 14
+        },
+      locale: {
+          cancelLabel: 'Clear'
+      }
+
+    }, cb);
+
+    cb(start, end);
+   
+    
     $("#reportrange").on('apply.daterangepicker', function(ev, picker) {
+
+        
         start = picker.startDate.format('YYYY-MM-DD');
         end =  picker.endDate.format('YYYY-MM-DD');
 
         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' | ' + picker.endDate.format('YYYY-MM-DD'));
         document.getElementById('date-text').innerHTML = start +' | ' + end;
         var daterange = $('#date-text').html();
-        myTable.columns(0).search(daterange).draw();
-        
-
-        //myTable.draw();
+       
     });
 
     $("#reportrange").on('cancel.daterangepicker', function(ev, picker) {
@@ -148,7 +247,7 @@ jQuery(function($) {
     });
 // Date range script - END of the script
 
-    $.fn.dataTableExt.afnFiltering.push(
+   /* $.fn.dataTableExt.afnFiltering.push(
         function( oSettings, aData, iDataIndex ) {
 
             var grab_daterange = $("#reportrange").val();
@@ -180,6 +279,37 @@ jQuery(function($) {
             return false;
         }
     );
+*/
+    $('#save').on('click', function(){
+        var param = {};
+        
+        if($("#check-date").prop("checked")) {
+            param= 'fulltimestamp:'+$('#date-text').html();
+          } else {
+            param= 'fulltimestamp:';
+          }
+         
+         //param+= '& terminal:'+$('#terminal').val();
+         //param+= '& fullname:'+$('#fullname').val();
+         //param+= '& utility_type:'+$('#utility_type').val();
+         //param+= '& amount:'+$('#amount').val();
+         param+= '& utility_reference:'+$('#utility_ref').val();  
+         //param+= '& msisdn:'+$('#msisdn').val();  
+         //param+= '& reference:'+$('#transid').val();   
+         param+= '& transid:'+$('#transid').val();   
+         param+= '& result:'+$('#result').val();   
+        
+         //send to datatables server side     
+        myTable.columns(0).search(param).draw();
+        
+        $('#myModal').attr('data-dismiss','modal'); 
+        $('#myModal').modal('hide');
+         
+    
+        
+    });
+
+   
 
 //End of the datable
 

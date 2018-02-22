@@ -5044,3 +5044,26 @@ if (typeof NProgress != 'undefined') {
 	});	
 	
 
+	$('#email').mask("A", {
+		translation: {
+			"A": { pattern: /[\w@\-.+]/, recursive: true }
+		}
+	});
+	$(function() {
+    $('input[name="emp_start"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true
+    }, 
+    function(start, end, label) {
+        var years = moment().diff(start, 'years');
+        //alert("You are " + years + " years old.");
+		});
+		$('input[name="emp_end"]').daterangepicker({
+			singleDatePicker: true,
+			showDropdowns: true
+	}, 
+	function(start, end, label) {
+			var years = moment().diff(start, 'years');
+			//alert("You are " + years + " years old.");
+	});
+});

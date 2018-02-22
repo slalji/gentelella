@@ -108,6 +108,8 @@
     <script src="../vendors/jszip/dist/jszip.min.js"></script>
     <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- JS_MASK-->
+    <script src="../vendors/jquery_mask/dist/jquery.mask.min.js"></script>
     <!-- Include Date Range Picker -->
     <!-- Include Required Prerequisites -->
     <script type="text/javascript" src="../vendors/moment/min/moment.min.js"></script>
@@ -116,8 +118,9 @@
     <script type="text/javascript" src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="../vendors/bootstrap-daterangepicker/daterangepicker.css" />
 <!-- jQuery Smart Wizard -->
-<script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-    <
-  
-    <script src="./build/js/custom.min.js"></script>
+<script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script><!-- jQuery Smart Wizard -->
+<script src="../vendors/garlicjs/dist/garlic.min.js"></script>
+
+      
+    <script src="./build/js/custom.js"></script>
     <script src="./app/js/transactions.js"></script>
