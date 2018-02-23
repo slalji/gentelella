@@ -77,6 +77,7 @@ function SmartWizard(target, options) {
                     var frm = $this.target.parents('form');
                     if(frm && frm.length){
                         frm.submit();
+                        console.log('submit');
                     }
                 }
             }
@@ -89,7 +90,8 @@ function SmartWizard(target, options) {
             }
             var nextStepIdx = $this.steps.index(this);
             var isDone = $this.steps.eq(nextStepIdx).attr("isDone") - 0;
-            if(isDone == 1){
+            if(isDone == 1){               
+                
                 _loadContent($this, nextStepIdx);
             }
             return false;
@@ -245,6 +247,7 @@ function SmartWizard(target, options) {
         _adjustButton($this);
 
         if($.isFunction($this.options.onShowStep)) {
+            alert();
             var context = { fromStep: parseInt($(curStep).attr('rel')), toStep: parseInt($(selStep).attr('rel')) };
             if(! $this.options.onShowStep.call(this,$(selStep),context)){
                 return false;
@@ -275,6 +278,7 @@ function SmartWizard(target, options) {
                 $($this.buttons.next).addClass("buttonDisabled");
                 if ($this.options.hideButtonsOnDisabled) {
                     $($this.buttons.next).hide();
+                    console.log('hide next');
                 }
             }else{
                 $($this.buttons.next).removeClass("buttonDisabled");
@@ -287,7 +291,7 @@ function SmartWizard(target, options) {
         if (! $this.steps.hasClass('disabled') || $this.options.enableFinishButton){
             $($this.buttons.finish).removeClass("buttonDisabled");
             if ($this.options.hideButtonsOnDisabled) {
-                $($this.buttons.finish).show();
+                $($this.buttons.finish).hide();//should
             }
         }else{
             $($this.buttons.finish).addClass("buttonDisabled");
@@ -390,6 +394,9 @@ function SmartWizard(target, options) {
         stepContainer.height(height + 5);
         this.elmStepContainer.height(height + 20);
     }
+    SmartWizard.prototype.checkLastStep = function() {
+        console.log(currentStep);
+    };
 
     _init(this);
 };
@@ -425,6 +432,7 @@ $.fn.smartWizard = function(method) {
     }
 };
 
+
 // Default Properties and Events
 $.fn.smartWizard.defaults = {
     selected: 0,  // Selected Step, 0 = first step
@@ -435,14 +443,14 @@ $.fn.smartWizard.defaults = {
     contentCache:true, // cache step contents, if false content is fetched always from ajax url
     cycleSteps: false, // cycle step navigation
     enableFinishButton: false, // make finish button enabled always
-	hideButtonsOnDisabled: false, // when the previous/next/finish buttons are disabled, hide them instead?
+	hideButtonsOnDisabled: true, // when the previous/next/finish buttons are disabled, hide them instead?
     errorSteps:[],    // Array Steps with errors
     labelNext:'Next',
     labelPrevious:'Previous',
     labelFinish:'Finish',
-    noForwardJumping: false,
+    noForwardJumping: true,
     onLeaveStep: null, // triggers when leaving a step
-    onShowStep: null,  // triggers when showing a step
+    onShowStep: true,//$this.checkLastStep,  // triggers when showing a step
     onFinish: null  // triggers when Finish button is clicked
 };
 

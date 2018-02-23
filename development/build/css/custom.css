@@ -4282,7 +4282,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     cursor: pointer; 
     padding: 5px 10px; 
     border: 1px solid #ccc; 
-    font-size:11px;
+    xfont-size:11px;
 }
 .nav-md .container.body .right_col{
     padding: 0px 0px !important ;

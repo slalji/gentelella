@@ -2,8 +2,8 @@ $( document ).ready(function() {
     
    $('#reportrange').hide();
    $('#dataTables_filter').hide();
-   //$("td div").tooltip({container:'body'});  
-  
+
+   
    
  
 });
@@ -15,6 +15,8 @@ $('#check-date').change(function(){
       $('#reportrange').hide();
     }
   });
+
+  
 jQuery(function($) {
   
     //initiate dataTables plugin
@@ -119,12 +121,12 @@ myTable.on('draw.dt', function () {
 });
 
     //$('#my-table_filter').hide();
-/*
-    $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+
+     /* $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
 
     new $.fn.dataTable.Buttons( myTable, {
         buttons: [
-            {
+          {
                 "extend": "colvis",
                 "text": "<i class='fa fa-eye-slash bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
                 "className": "btn btn-white btn-primary btn-bold",
@@ -158,10 +160,32 @@ myTable.on('draw.dt', function () {
                 autoPrint: false,
                 message: 'This print was produced using the Print button for DataTables'
             }
+            {
+                
+                "text": "<i class='fa fa-file-excel-o  bigger-110 green'></i> <span class='hidden'>Export CSV</span>",
+                "className": "btn btn-white btn-default btn-bold ",
+                "action": function (e, dt, node, config) {
+                    $.ajax({
+                        "url": " ajax/initServerSide.php?download=yes",
+                        "data": dt.ajax.params(),
+                        "success": function(res, status, xhr) {
+                            var csvData = new Blob([res], {type: 'text/csv;charset=utf-8;'});
+                            var csvURL = window.URL.createObjectURL(csvData);
+                            var tempLink = document.createElement('a');
+                            tempLink.href = csvURL;
+                            tempLink.setAttribute('download', 'data.csv');
+                            tempLink.click();
+                        }
+                    });
+                } 
+            }   
+            
+           
         ]
     } );
+    //myTable.buttons().container().appendTo( $('.tableTools-container') );
     myTable.buttons().container().appendTo( $('.tableTools-container') );
-
+*/
     //style the message box
     var defaultCopyAction = myTable.button(1).action();
     myTable.button(1).action(function (e, dt, button, config) {
@@ -185,7 +209,7 @@ myTable.on('draw.dt', function () {
     });
 
     ////
-*/
+
     setTimeout(function() {
         $($('.tableTools-container')).find('a.dt-button').each(function() {
             var div = $(this).find(' > div').first();
@@ -295,29 +319,55 @@ myTable.on('draw.dt', function () {
         
         if($("#check-date").prop("checked")) {
             param= 'fulltimestamp:'+$('#date-text').html();
-          } else {
+          } 
+        else {
             param= 'fulltimestamp:';
           }
+      
          
-         //param+= '& terminal:'+$('#terminal').val();
-         //param+= '& fullname:'+$('#fullname').val();
-         //param+= '& utility_type:'+$('#utility_type').val();
-         //param+= '& amount:'+$('#amount').val();
-         param+= '& utility_reference:'+$('#utility_ref').val();  
-         //param+= '& msisdn:'+$('#msisdn').val();  
-         //param+= '& reference:'+$('#transid').val();   
+         
+         param+= '& utility_reference:'+$('#utility_ref').val();          
          param+= '& transid:'+$('#transid').val();   
-         param+= '& result:'+$('#result').val();   
+         param+= '& result:'+$('#result').val();
+         param+= '& download:'+$('#isdownload input:radio:checked').val();
+            
         
          //send to datatables server side     
         myTable.columns(0).search(param).draw();
         
         $('#myModal').attr('data-dismiss','modal'); 
         $('#myModal').modal('hide');
+
+        if ($('#isdownload input:radio:checked').val() == 'yes'){
+          
+            MyTimestamp = new Date().getTime(); // Meant to be global var
+            $.ajax({
+             "url": " ajax/download.php",
+             type: "post",
+             "data": {fulltimestamp:$('#date-text').html(), util_ref:$('#utility_ref').val(), transid:$('#transid').val(),result:$('#result').val(),download:'yes' },
+           "success": function(res, status, xhr) {
+               /*  //console.log(res); 
+               
+                 var csvData = new Blob([res], {type: 'text/csv;charset=utf-8;'});
+                 var csvURL = window.URL.createObjectURL(csvData);
+                 var tempLink = document.createElement('a');
+                 tempLink.href = csvURL;
+                 tempLink.setAttribute('download', 'data.csv');
+                 tempLink.click();*/
+                 document.location.href ="ajax/download.php";
+             },
+             "error": function(res, status, xhr) {
+                alert('Err:' ); 
+             }
+            
+         }); 
+         //alert();
+         }
          
     
         
     });
+   
 
    
 

@@ -37,7 +37,7 @@
                           a><a class="dt-button buttons-print btn btn-white btn-default btn-bold"
                            tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""><span>
                              <i class="fa fa-print bigger-110 grey"></i> <span class="hidden">Print</span></span></a></div></div>
-                    </ul>-->
+                    </ul> -->
                     <div class="clearfix"></div>
                   </div>
                   <div xclass="x_content">
@@ -94,49 +94,50 @@
         </div>
             <div xclass="modal-body">
 
-                <div class="col-xs-12 col-sm-9">
-                    <form id="theForm" method="post" action="#">
-
-                    <div class="form-group" >
-                        <div class="col-xs-12 col-sm-9">
-                            <table>
-                               <tr>
-                                <td><b>Date Range</b> <input type=checkbox name="check-date" id="check-date" ></td>
-                                  <td>
-                                  <div id="reportrange"  style="border-radus:5px ;background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; xwidth: 30%"> <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;<span id="date-text"></span> <b class="caret"></b></div>
-                                  </td>
-                               
-                                </tr>
-                                
- 
-                                <tr>
-                                    <td><label>Reference / Transaction ID</label></td>
-                                    <td><input type="text" name="transid" id="transid" value="" class="form-control" /></td>
-                                </tr>
-                                <tr>
-                                    <td><label>Utility Reference</label></td>
-                                    <td> <input type=text name="utility_ref" id="utility_ref" value="" class="form-control"  /></td>
-                                </tr>
-                                
-                                <tr>
-                                    <td><label>Result</label></td>
-                                    <td> <select type=text name="result" id="result" class="form-control" >
-                                      <option value="">All</option>
-                                      <option value="000">Success</option>
-                                    </select>
-                                    </td>
-                                </tr>
-                            </table>
+                <div class="col-xs-12 col-sm-6">
+                  <form id="theForm">
+                        <div class="form-group">
+                          <b>Date Range</b> <input type=checkbox name="check-date" id="check-date" >
+                          <div id="reportrange"  style="border-radus:5px ;background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; xwidth: 30%"> <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;<span id="date-text"></span> <b class="caret"></b></div>
                         </div>
-                    </div>
-               
+                        <div class="form-group">
+                          <label for="transid">Reference / Transaction ID</label>
+                          <input type="text" name="transid" id="transid" value="" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                          <label for="utility_ref">Utility Reference</label>
+                          <input type=text name="utility_ref" id="utility_ref" value="" class="form-control"  />
+                        </div>
+                        <div class="form-group">
+                          <label for="result">Result</label>
+                          <select type=text name="result" id="result" class="form-control" >
+                              <option value="">All</option>
+                              <option value="000">Success</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Download</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="isdownload" class="btn-group" data-toggle="buttons">
+                              <label class="btn btn-default" data-toggle-class="btn btn-primary" xdata-toggle-passive-class="btn-default">
+                                <input type="radio" id="download" name="download" value="yes"> &nbsp; Yes &nbsp;
+                              </label>
+                              <label class="btn btn-default active" data-toggle-class="btn btn-primary" xdata-toggle-passive-class="btn-default">
+                                <input type="radio" id="download" name="download" checked value="no"> No
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+ 
                 </form>
+
               </div>
                 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+            <div class="modal-footer">               
                 <button type="button" class="btn btn-primary" id="save" value="save" name="submit">Search</button>
+                <!--<button type="button" class="btn btn-warning" id="download" value="download" name="download">Download</button>-->
+                <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

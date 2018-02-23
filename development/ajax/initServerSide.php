@@ -15,6 +15,9 @@ $requestData= $_REQUEST;
 $section = $_REQUEST['section'];
 $where = '';
 $max = 11;
+$download='no';
+if (isset($_REQUEST['download']))
+	$download = $_REQUEST['download'];
 
 $sql = "SELECT transactions.id, fulltimestamp, terminal, members.fullname, members.ip_address, utility_type, amount,utility_reference, msisdn, reference, transid, result, message from transactions join members on members.id = transactions.id ";
 	// initial of 10 rows
@@ -23,7 +26,7 @@ $totalData = 10;
 $totalFiltered = $totalData;
 
 if( !empty($requestData['columns'][0]['search']['value']) ){ 
-	//print_r($requestData);
+//print_r($requestData);
 	$where = ' WHERE transactions.id = members.id' ;
 	$sql = "SELECT transactions.id, fulltimestamp, terminal, members.fullname, members.ip_address, utility_type, amount,utility_reference, msisdn, reference, transid, result, message from transactions join members on members.id = transactions.id  ";
 
@@ -53,6 +56,8 @@ if( !empty($requestData['columns'][0]['search']['value']) ){
 			$where.=" AND ".$key." like '%" . $val ."%'" ;
 		else if ($key == 'result' && $val !='')
 			$where.=" AND ".$key." like '%" . $val ."%'" ;
+		/*else if ($key == 'download' && $val !='')
+			$download = $val;*/
 	
 	
 		
@@ -97,6 +102,21 @@ $json_data = array(
 "data"            => $data   // total data array
 );
 
-echo json_encode($json_data);  // send data as json format
+/*
+if (isset( $download) && $download == 'yes'){
+	header('Content-Type: text/csv; charset=utf-8');
+	header('Content-Disposition: attachment; filename=data.csv');
+//$output = fopen('php://output', 'w');
+
+$output = fopen('data.csv', 'w');
+foreach ($data as $d)
+	//fputcsv($output, $d);
+	echo $d;
+}
+else
+  
+ //else
+ */
+ echo json_encode($json_data);  // send data as json format
 
 ?>
