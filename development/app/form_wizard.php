@@ -69,13 +69,13 @@
         </ul>
         <div id="step-1">
         <h2 class="StepTitle">Step 1 Personal</h2>
-          <form class="form-horizontal form-label-left" data-persist="garlic">
+          <form id"formStep1" class="form-horizontal form-label-left" data-persist="garlic">
 
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fullname">Full Name <span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="fullname" required="required" class="form-control col-md-7 col-xs-12">
+                <input type="text" name="fullname" id="fullname" required="required" class="form-control col-md-7 col-xs-12">
               </div>
             </div>
             <div class="form-group">
@@ -88,7 +88,7 @@
             <div class="form-group">
               <label for="designation" class="control-label col-md-3 col-sm-3 col-xs-12">Designation</label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <select id="designation" class="form-control col-md-7 col-xs-12" name="designation">
+                <select name="designation" id="designation" class="form-control col-md-7 col-xs-12" name="designation">
                   <option value="">--Choose--</option>
                   <option value="manager">MANAGER</option>
                   <option value="supervisor">SUPERVISOR</option>
@@ -122,13 +122,13 @@
         <div id="step-2">
           <h2 class="StepTitle">Step 2 Contact</h2>
           
-          <form class="form-horizontal form-label-left"  data-persist="garlic">
+          <form id="formStep2" class="form-horizontal form-label-left"  data-persist="garlic">
 
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address<span class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="address" required="required" class="form-control col-md-7 col-xs-12" placeholder="street, area, city">
+                <input type="text" name="address" id="address" required="required" class="form-control col-md-7 col-xs-12" placeholder="street, area, city">
               </div>
             </div>
             <div class="form-group">
@@ -156,7 +156,7 @@
         </div>
         <div id="step-3">
           <h2 class="StepTitle">Step 3 Relation Details</h2>
-           <form class="form-horizontal form-label-left"  data-persist="garlic">
+           <form id="formStep3" class="form-horizontal form-label-left"  data-persist="garlic">
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Contact Name <span class="required">*</span>
@@ -185,13 +185,13 @@
         </div>
         <div id="step-4">
           <h2 class="StepTitle">Step 4 Employment</h2>
-          <form class="form-horizontal form-label-left"  data-persist="garlic">
+          <form  id="formStep4" class="form-horizontal form-label-left"  data-persist="garlic">
 
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nssf">NSSF No. <span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="nssf"  class="form-control col-md-7 col-xs-12">
+                    <input type="text" id="nssf" name="nssf" class="form-control col-md-7 col-xs-12">
                   </div>
                 </div>
                 <div class="form-group">
@@ -211,7 +211,7 @@
                 <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12">Terms of Employment</label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <div id="emp_terms" class="btn-group" data-toggle="buttons">
+                <div id="emp_terms" xname="emp_terms" class="btn-group" data-toggle="buttons">
                   <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                     <input type="radio" name="emp_terms" value="permnent"> &nbsp; Permnent &nbsp;
                   </label>
@@ -238,14 +238,14 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gross">Gross Salary</label>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="gross"  class="form-control col-md-7 col-xs-12">
+                    <input type="text" id="gross" name="gross" class="form-control col-md-7 col-xs-12">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="extension">Extention of Contract Period</label>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select  id="extension"  class="form-control col-md-7 col-xs-12">
+                    <select  id="extension" name="extension"  class="form-control col-md-7 col-xs-12">
                     <option value="">--Choose--</option>
                       <option value="days">Days (1-30)</option>
                       <option value="weeks">Weeks (1-4)</option>
@@ -258,7 +258,7 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="emp_by">Employed By</label>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select id="emp_by"  class="form-control col-md-7 col-xs-12">
+                    <select id="emp_by" name="emp_by" class="form-control col-md-7 col-xs-12">
                       <option value="">--Choose--</option>
                       <option value="director">Director</option>
                       <option value="technical Manager">Technical Manager</option>
@@ -270,7 +270,7 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="approved_by">Approved By</label>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                  <select id="approved_by"  class="form-control col-md-7 col-xs-12">
+                  <select id="approved_by" name="approved_by" class="form-control col-md-7 col-xs-12">
                       <option value="">--Choose--</option>
                       <option value="director">Director</option>
                       <option value="technical Manager">Technical Manager</option>
@@ -304,3 +304,4 @@
 </div>
         <!-- /page content -->
 
+  <script src="./app/js/smartwizard.js"></script>
