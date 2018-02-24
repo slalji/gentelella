@@ -27,7 +27,7 @@
 
 
       <!-- Smart Wizard -->
-      <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
+      <p>Note: Complete required fields before next step</p>
       <div id="wizard" class="form_wizard wizard_horizontal">
         <ul class="wizard_steps">
           <li>
@@ -281,7 +281,7 @@
                 <div class="form-group">
                   
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type=submit value=Save name=submit id=submit class="btn btn-warning">
+                  <!--<input type=submit value=Save name=submit id=submit class="btn btn-warning">-->
                   </div>
                 </div>
                

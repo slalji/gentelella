@@ -42,7 +42,7 @@
                   </div>
                   <div xclass="x_content">
                     <p class="text-muted font-13 m-b-30">
-                    <div class="list">
+                    <div id="loading"></div>
                       
                    </p>
                     <table id="dynamic-table" class="table table-striped table-bordered table-condensed">
@@ -108,14 +108,30 @@
                           <label for="utility_ref">Utility Reference</label>
                           <input type=text name="utility_ref" id="utility_ref" value="" class="form-control"  />
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                           <label for="result">Result</label>
                           <select type=text name="result" id="result" class="form-control" >
                               <option value="">All</option>
                               <option value="000">Success</option>
                           </select>
-                        </div>
+                        </div>-->
+                        
+                        
                         <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Result</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="isresult" class="btn-group" data-toggle="buttons">
+                              <label class="btn btn-default" data-toggle-class="btn btn-primary" xdata-toggle-passive-class="btn-default">
+                                <input type="radio" id="result" name="result" value="000"> Success
+                              </label>
+                              <label class="btn btn-default active" data-toggle-class="btn btn-primary" xdata-toggle-passive-class="btn-default">
+                                <input type="radio" id="result" name="result" checked value=""> All
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+<br><br><br>
+<div class="form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-12">Download</label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
                             <div id="isdownload" class="btn-group" data-toggle="buttons">
@@ -128,7 +144,6 @@
                             </div>
                           </div>
                         </div>
- 
                 </form>
 
               </div>

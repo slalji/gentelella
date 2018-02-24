@@ -328,7 +328,8 @@ myTable.on('draw.dt', function () {
          
          param+= '& utility_reference:'+$('#utility_ref').val();          
          param+= '& transid:'+$('#transid').val();   
-         param+= '& result:'+$('#result').val();
+         //param+= '& result:'+$('#result').val();
+         param+= '& result:'+$('#isresult input:radio:checked').val();
          param+= '& download:'+$('#isdownload input:radio:checked').val();
             
         
@@ -345,16 +346,21 @@ myTable.on('draw.dt', function () {
              "url": " ajax/download.php",
              type: "post",
              "data": {fulltimestamp:$('#date-text').html(), util_ref:$('#utility_ref').val(), transid:$('#transid').val(),result:$('#result').val(),download:'yes' },
-           "success": function(res, status, xhr) {
-               /*  //console.log(res); 
-               
-                 var csvData = new Blob([res], {type: 'text/csv;charset=utf-8;'});
-                 var csvURL = window.URL.createObjectURL(csvData);
-                 var tempLink = document.createElement('a');
-                 tempLink.href = csvURL;
-                 tempLink.setAttribute('download', 'data.csv');
-                 tempLink.click();*/
-                 document.location.href ="ajax/download.php";
+             beforeSend: function() {
+                // setting a timeout
+                $('#loading').html('loading...');
+                //document.location.href ="ajax/download.php";
+            },
+             "success": function(res, status, xhr) {
+               $('#loading').html('');
+                // document.location.href ="ajax/download.php";
+                var csvData = new Blob([res], {type: 'text/csv;charset=utf-8;'});
+                            var csvURL = window.URL.createObjectURL(csvData);
+                            var tempLink = document.createElement('a');
+                            tempLink.href = csvURL;
+                            tempLink.setAttribute('download', 'export.csv');
+                            tempLink.click();
+                            
              },
              "error": function(res, status, xhr) {
                 alert('Err:' ); 
