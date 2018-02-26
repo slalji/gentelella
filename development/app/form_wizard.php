@@ -185,6 +185,7 @@
         </div>
         <div id="step-4">
           <h2 class="StepTitle">Step 4 Employment</h2>
+          <div><label class="alert alert-success" id="message"></label></div>
           <form  id="formStep4" class="form-horizontal form-label-left"  data-persist="garlic">
 
                 <div class="form-group">
@@ -238,14 +239,14 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gross">Gross Salary</label>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="gross" name="gross" class="form-control col-md-7 col-xs-12">
+                    <input type="text" id="gross_salary" name="gross_salary" class="form-control col-md-7 col-xs-12">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="extension">Extention of Contract Period</label>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select  id="extension" name="extension"  class="form-control col-md-7 col-xs-12">
+                    <select  id="extension_of_contract" name="extension_of_contract"  class="form-control col-md-7 col-xs-12">
                     <option value="">--Choose--</option>
                       <option value="days">Days (1-30)</option>
                       <option value="weeks">Weeks (1-4)</option>
@@ -258,7 +259,7 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="emp_by">Employed By</label>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select id="emp_by" name="emp_by" class="form-control col-md-7 col-xs-12">
+                    <select id="employed_by" name="employed_by" class="form-control col-md-7 col-xs-12">
                       <option value="">--Choose--</option>
                       <option value="director">Director</option>
                       <option value="technical Manager">Technical Manager</option>
@@ -276,7 +277,7 @@
                       <option value="technical Manager">Technical Manager</option>
                       <option value="HR Manger">HR Manager</option>
                     </select>
-                  </div>
+                  </div> 
                 </div>
                 <div class="form-group">
                   

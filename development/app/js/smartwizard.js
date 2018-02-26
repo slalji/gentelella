@@ -35,14 +35,18 @@
             
                 //return validateSteps(context.fromStep); // return false to stay on step and true to continue navigation 
         }
-
+        $('#message').hide();
         function onFinishCallback(objs, context){
             $.ajax({
                 type:"POST",
                 url:"ajax/addEmp.php",
                 data:$('form').serialize(),
                 success: function(response){
-                    console.log(response);  
+                    $('#message').html('Employee Added');
+                    $('#message').show();
+                    setTimeout( "$('#message').hide();", 4000);
+                    $('form').garlic( 'destroy');
+                    
                 }
             });
         }

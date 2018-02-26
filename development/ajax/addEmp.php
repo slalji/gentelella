@@ -1,16 +1,54 @@
 <?php 
-require_once 'config'; // The mysql database connection script
-print_r($_REQUEST);
+/* Database connection start */
+$servername = "localhost";
+$username = "root";
+$password = "roots";
+$dbname = "selcom_nbc";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
+
+/* Database connection end */
+$cols ='';
+$values = '';
+$start = date("Y-m-d", strtotime($_REQUEST['emp_start']));
+$end = date("Y-m-d", strtotime($_REQUEST['emp_end']));
+
 if(isset($_REQUEST['fullname'])){
-	$fullname = $mysqli->real_escape_string($_GET['fullname']);
+    foreach ($_REQUEST as $key => $val){
+        $cols .=$key  . ", ";
+        if($key == 'emp_start')
+            $values .= "'".$start . "', ";
+        else if($key == 'emp_end')
+            $values .= "'".$end . "', ";
+        else
+            $values .= "'".$val . "', ";
+    }
+       
+	$fullname = ($_REQUEST['fullname']);
 	$status = "0";
-	$created = date("Y-m-d", strtotime("now"));
+    $created = date("Y-m-d", strtotime("now"));
+   
+  
+    $sql="INSERT INTO employees(".$cols."created_at)  VALUES (".$values." '$created')";
+   //print_r($sql);
 
-	$query="INSERT INTO employees(fullname,created_at)  VALUES ('$fullname', '$created')";
-	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+    $result=mysqli_query($conn, $sql) or die(mysqli_error($conn).' '.$sql);
+    
+        //$rows = mysqli_fetch($result);
+//echo ( $json_response = json_encode($rows));
+if ($result){
+    echo true;
+    $to      = 'salma@wisecrack.ca, swaroop@swachen.co.tz';
+$subject = 'Employee Added, '.$_REQUEST['fullname'];
+$message = 'New Employee, '.$_REQUEST['fullname'].' Added by ' . $_REQUEST['employed_by'] . ' and was approved by '.$_REQUEST['approved_by'];
+$headers = 'From: web@swachen.com' . "\r\n" .
+    'Reply-To: nobody@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 
-	$result = $mysqli->affected_rows;
+mail($to, $subject, $message, $headers);
+}
 
-	echo $json_response = json_encode($result);
+
 	}
 ?>
++

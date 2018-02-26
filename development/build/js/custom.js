@@ -5034,7 +5034,8 @@ if (typeof NProgress != 'undefined') {
 	$(function() {
     $('input[name="emp_start"]').daterangepicker({
         singleDatePicker: true,
-        showDropdowns: true
+				showDropdowns: true,
+				format: 'yyyy-mm-dd'
     }, 
     function(start, end, label) {
         var years = moment().diff(start, 'years');
@@ -5042,7 +5043,8 @@ if (typeof NProgress != 'undefined') {
 		});
 		$('input[name="emp_end"]').daterangepicker({
 			singleDatePicker: true,
-			showDropdowns: true
+			showDropdowns: true,
+			format: 'yyyy-mm-dd'
 	}, 
 	function(start, end, label) {
 			var years = moment().diff(start, 'years');
