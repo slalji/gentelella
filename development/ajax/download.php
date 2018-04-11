@@ -3,25 +3,20 @@
 $servername = "localhost";
 $username = "root";
 $password = "roots";
-$dbname = "selcom_nbc";
+$dbname = "selcom_dashboard";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
 
 /* Database connection end */
-
+$where="";
 
 if (isset($_REQUEST['fulltimestamp']))
-	$fulltimestamp = $_REQUEST['fulltimestamp'];
-
-else if (isset($_REQUEST['transid']))
-	$transid = $_REQUEST['transid'];
-else if (isset($_REQUEST['util_ref']))
-	$util_ref = $_REQUEST['util_ref'];
-else if (isset($_REQUEST['result']))
-	$result = $_REQUEST['result'];
-
-$where = ' WHERE transactions.id = members.id' ;
-$sql = "SELECT transactions.id, fulltimestamp, terminal, members.fullname, members.ip_address, utility_type, amount,utility_reference, msisdn, reference, transid, result, message from transactions join members on members.id = transactions.id  ";
+	$fulltimestamp = $_REQUEST['fulltimestamp']; 
+	 
+	$utility_code = $_REQUEST['utility_code'];
+	//print_r($_REQUEST);
+	$sql = "SELECT WEEK(fulltimestamp,1) wk, (fulltimestamp) DayOfMonth, type, utility_code, sum(amount) amnt, count(amount) cnt FROM `transactions` WHERE type like '%DEBIT%' and utility_code like '%".$utility_code."%' group by DAY(fulltimestamp)";
+	//print_r($sql);
 if (isset($fulltimestamp)){
 $range = explode('|',$fulltimestamp);		
 	$start = trim($range[0]); //name
@@ -29,18 +24,14 @@ $range = explode('|',$fulltimestamp);
 	$where.=" AND fulltimestamp >= '".$start."' AND fulltimestamp < ('" .$end. "' + INTERVAL 1 DAY) ";
 }
 
-else if (isset($transid))
-	$where.=" AND (transid like '%" . $transid ."%' or reference like '%".$transid."%') ";		
-else if (isset($util_ref))
-	$where.=" AND utility_reference like '%" . $util_ref ."%'" ;
-else if (isset($result))
-	$where.=" AND result like '%" . $result ."%'" ;
+/*else if (isset($utility_code))
+	$where.=" AND utility_code like '%" . $utility_code ."%'" ;
 
    $sql .= $where;
-   //print_r($sql);
+  */ //print_r($sql);
  
    
-$sql.= " ORDER BY fulltimestamp   desc";
+//$sql.= " group by mins ORDER BY fulltimestamp   desc";
 
 $result=mysqli_query($conn, $sql) or die(mysqli_error($conn).' '.$sql);
 //$rows=mysqli_fetch_assoc($query);
@@ -51,7 +42,7 @@ $headers = array();
 foreach ($finfo as $val) {
     $headers[] = $val->name;
 }
-
+ 
 $fp = fopen('php://output', 'w');
 if ($fp && $result) {
     header('Content-Type: text/csv');
@@ -66,6 +57,6 @@ if ($fp && $result) {
 		fputcsv($fp, $rows);
 	}
 }
-
+ 
 
 ?>

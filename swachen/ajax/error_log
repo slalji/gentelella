@@ -1,0 +1,4 @@
+[25-Feb-2018 23:42:03 America/Denver] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home4/likejagg/public_html/wisecrack.ca/swachen2/ajax/addEmp.php on line 8
+[25-Feb-2018 23:50:30 America/Denver] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home4/likejagg/public_html/wisecrack.ca/swachen2/ajax/addEmp.php on line 15
+[25-Feb-2018 23:51:56 America/Denver] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'likejagg'@'localhost' (using password: YES) in /home4/likejagg/public_html/wisecrack.ca/swachen2/ajax/addEmp.php on line 15
+[25-Feb-2018 23:55:27 America/Denver] PHP Warning:  mysqli_connect(): (42000/1044): Access denied for user 'likejagg_kll'@'localhost' to database 'likejagg_selcom_nbc' in /home4/likejagg/public_html/wisecrack.ca/swachen2/ajax/addEmp.php on line 16

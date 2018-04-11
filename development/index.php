@@ -5,7 +5,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title" style="background:#fff; "><img src="images/nbc.png" > <span style="color:#2A3F54">NBC Agency</span></a>
+              <a href="index.php" class="site_title" style="background:#fff; "><img src="images/SELCOM-01.png" alt="Selcom"> <!--<span style="color:#2A3F54">Selcom</span>--></a>
             </div>
 
             <div class="clearfix"></div>
@@ -32,7 +32,7 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-          <!-- top tiles -->
+          <!-- top tiles 
           <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
@@ -65,9 +65,10 @@
               <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
             </div>
           </div>
-          <!-- /top tiles -->
+         /top tiles -->
 
-        <!-- /page content --><div class="login col-md-12 " >
+        <!-- /page content -->
+        <div class="login col-md-12 " >
         <?php 
         if (isset($_GET['page']))
           include 'app/'.$_GET['page']. '.php';
@@ -75,14 +76,13 @@
           include "login.php";
         
         ?>
-</div>
+</div>   
 
 
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
    
@@ -92,6 +92,22 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- iCheck -->
     <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+       <!-- Flot -->
+       <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="../vendors/Flot/jquery.flot.axislabels.js"></script>  
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/Flot/flot.tooltip-master/js/jquery.flot.tooltip.source.js"></script> 
+    <script src="../vendors/Flot/flot.tooltip-master/js/jquery.flot.tooltip.js"></script> 
+
+    
     <!-- Datatables -->
     <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -125,4 +141,5 @@
 <script src="../vendors/garlicjs/dist/garlic.min.js"></script>
       
     <script src="./build/js/custom.js"></script>
-    <script src="./app/js/transactions.js"></script>
+    
+    <script src="./app/js/smartwizard.js"></script>

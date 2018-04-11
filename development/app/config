@@ -1,0 +1,17 @@
+/* Database connection start */
+
+$servername = "localhost";
+
+$username = "likejagg";
+
+$password = "K9@m2076";
+
+$dbname = "likejagg_selcom_nbc";
+
+
+
+$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
+
+
+
+/* Database connection end */

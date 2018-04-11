@@ -1,9 +1,22 @@
 $( document ).ready(function() {
-    
+    $(this).scrollTop(0);
    $('#reportrange').hide();
    $('#dataTables_filter').hide();
-
+  
+   $.ajax({
+    "url": " ajax/utility_codes.php",
+    type: "get",   
+    "success": function(res, status, xhr) {
+      $('#loading').html('');
+       var _html = JSON.stringify(xhr);// document.location.href ="ajax/download.php";
+       $('#utility_code').html(_html); 
+       $month = moment().format("M");                  
+    },
+    "error": function(res, status, xhr) {
+       alert('Err:' ); 
+    }
    
+}); 
    
  
 });
@@ -20,105 +33,37 @@ $('#check-date').change(function(){
 jQuery(function($) {
   
     //initiate dataTables plugin
-    var section = 'transactions';
-    var cols= 'id, fulltimestamp, terminal, fullname,  address, utility_type, amount,utility_reference, msisdn, reference, transid, result';
+    //var section = 'transactions';
+     var utility_code = 'SPCASHIN';
+     //var cols= 'fullname,  address, utility_type, amount,utility_reference, msisdn, reference, transid, result';
 
     var myTable =
         $('#dynamic-table').DataTable( {
             "processing": true,
             "serverSide": true,
             "searchDelay": 5000,
-            "lengthMenu": [ [10, 50, 100, 150, 350, 500, 750, 1000],  [10, 50, 100, 150, 350, 500, 750, 1000] ],
+            "start":0,
+            "length":10,
+            "lengthMenu": [ [10, 50, 100, 150, 350, 500, 750, 1000, -1],  [10, 50, 100, 150, 350, 500, 750, 1000, 'All'] ],
             "order": [[ 1, 'desc' ]],
 
             bAutoWidth: false,
             ajax: {
                 url: "ajax/initServerSide.php", // json datasource
-                data: {section: section, cols: cols},
+                //data: {utility_code: utility_code, cols: cols},
                 type: "post"  // method  , by default get
 
             },
+  
             
-            "dom": '<"toolbar">lfrtip',
-            columns: [
-                {
-                    searchable: false,
-                    orderable: false,
-                },
-                {
-                    searchable: false,
-                    orderable: false
-                },
-                {
-                   searchable: true,
-                    orderable: false
-                },
-                {
-                    searchable: true,
-                     orderable: false
-                 },
-                
-                {
-                    "mRender": function ( data, type, row ) {
-                       // return ' <a data-toggle="tooltip-address" class="btn btn-secondary" data-html="true" title="'+data+'"><i class="fa fa-location-arrow fa-2x "></i></a> ';
-                       return '<span data-toggle="tooltip" title="' + data + '"><i class="fa fa-location-arrow fa-2x "></i></span>';
-                },
-
-                    searchable: false,
-                    orderable: false
-                },
-                {
-                    searchable: true,
-                     orderable: false
-                 },
-               
-                {
-                    searchable: true,
-                    orderable: false
-                },
-                {
-                    searchable: true,
-                    orderable: false
-                }
-                ,
-                {
-                    searchable: true,
-                    orderable: false
-                }
-                ,
-                {
-                    searchable: true,
-                    orderable: false
-                }
-                ,
-                {
-                    searchable: true,
-                    orderable: false
-                }
-                ,
-                {
-                    searchable: true,
-                    orderable: false
-                }
-                ,
-                {
-                    "mRender": function ( data, type, row ) {
-                        //return '<a data-toggle="tooltip-msg" class="btn btn-secondary" data-html="true" title="'+data+'"><i class="fa fa-info-circle fa-2x "></i></a>';
-                        return '<span data-toggle="tooltip" title="' + data + '"><i class="fa fa-info-circle fa-2x "></i></span>';
-                },
-
-                    searchable: false,
-                    orderable: false
-                }
-                 
-               
-            ],
+            "dom": '<"toolbar">lfrtip'
+            
         } );
-    $("div.toolbar").html('<div class="dataTables_length"></div><div><a href="#" id="advsearch" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Advanced Search</a><div>');
-/* Apply the tooltips */
-myTable.on('draw.dt', function () {
-    $('[data-toggle="tooltip"]').tooltip();
-});
+    $("div.toolbar").html('<div class="dataTables_length"></div><div><a href="#" id="advsearch" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Search</a><div>');
+    /* Apply the tooltips */
+    myTable.on('draw.dt', function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
     //$('#my-table_filter').hide();
 
@@ -279,79 +224,42 @@ myTable.on('draw.dt', function () {
         $(this).val('');
         myTable.draw();
     });
-// Date range script - END of the script
 
-   /* $.fn.dataTableExt.afnFiltering.push(
-        function( oSettings, aData, iDataIndex ) {
-
-            var grab_daterange = $("#reportrange").val();
-            var give_results_daterange = grab_daterange.split(" to ");
-            var filterstart = give_results_daterange[0];
-            var filterend = give_results_daterange[1];
-            var iStartDateCol = 1; //using column 2 in this instance
-            var iEndDateCol = 1;
-            var tabledatestart = aData[iStartDateCol];
-            var tabledateend= aData[iEndDateCol];
-
-
-            if ( !filterstart && !filterend )
-            {
-                return true;
-            }
-            else if ((moment(filterstart).isSame(tabledatestart) || moment(filterstart).isBefore(tabledatestart)) && filterend === "")
-            {
-                return true;
-            }
-            else if ((moment(filterstart).isSame(tabledatestart) || moment(filterstart).isAfter(tabledatestart)) && filterstart === "")
-            {
-                return true;
-            }
-            else if ((moment(filterstart).isSame(tabledatestart) || moment(filterstart).isBefore(tabledatestart)) && (moment(filterend).isSame(tabledateend) || moment(filterend).isAfter(tabledateend)))
-            {
-                return true;
-            }
-            return false;
-        }
-    );
-*/
     $('#save').on('click', function(){
-        var param = {};
+        var param ='';
         
-        if($("#check-date").prop("checked")) {
+       /* if($("#check-date").prop("checked")) {
             param= 'fulltimestamp:'+$('#date-text').html();
           } 
         else {
             param= 'fulltimestamp:';
-          }
-      
-         
-         
-         param+= '& utility_reference:'+$('#utility_ref').val();          
-         param+= '& transid:'+$('#transid').val();   
-         //param+= '& result:'+$('#result').val();
-         param+= '& result:'+$('#isresult input:radio:checked').val();
+          }  */      
+         param+= '&month:'+$('#month').val();  
+         param+= '&utility_code:'+$('#utility_code').val();                  
          param+= '& download:'+$('#isdownload input:radio:checked').val();
             
         
          //send to datatables server side     
-        myTable.columns(0).search(param).draw();
+       myTable.columns(0).search(param).draw();
         
         $('#myModal').attr('data-dismiss','modal'); 
         $('#myModal').modal('hide');
 
+        //if download is clicked, download data
         if ($('#isdownload input:radio:checked').val() == 'yes'){
           
             MyTimestamp = new Date().getTime(); // Meant to be global var
             $.ajax({
              "url": " ajax/download.php",
              type: "post",
-             "data": {fulltimestamp:$('#date-text').html(), util_ref:$('#utility_ref').val(), transid:$('#transid').val(),result:$('#result').val(),download:'yes' },
+             "data": {fulltimestamp:$('#date-text').html(), utility_code:$('#utility_code').val(), download:'yes' },
              beforeSend: function() {
                 // setting a timeout
                 $('#loading').html('loading...');
                 //document.location.href ="ajax/download.php";
             },
              "success": function(res, status, xhr) {
+               
                $('#loading').html('');
                 // document.location.href ="ajax/download.php";
                 var csvData = new Blob([res], {type: 'text/csv;charset=utf-8;'});
@@ -360,6 +268,7 @@ myTable.on('draw.dt', function () {
                             tempLink.href = csvURL;
                             tempLink.setAttribute('download', 'export.csv');
                             tempLink.click();
+            
                             
              },
              "error": function(res, status, xhr) {
@@ -368,11 +277,98 @@ myTable.on('draw.dt', function () {
             
          }); 
          //alert();
-         }
-         
-    
-        
+        }
+
+        //draw chart
+
+      // var d1 = [[0,5247000],[1,8201900],[2,4007001],[3,4690000],[4,9536000],[5,7629000],[6,4080000],[7,5081500],[8,7370000],[9,8848301],[10,8880000],[11,6270000],[12,8899000],[13,4077500],[14,7497000],[15,4469500],[16,4763000],[17,3734000],[18,9090000],[19,5790000],[20,2617000],[21,5380000],[22,1500000],[23,10332000],[24,7350000],[25,8135000],[26,5730000],[27,7807000],[28,6812500],[29,5521001],[30,6412000],[31,6818000],[32,7246500],[33,5080000],[34,4682000],[35,2656002],[36,7165000],[37,5870000],[38,4706000],[39,6765000],[40,9231000],[41,8727000],[42,8263000],[43,5435000],[44,1778000],[45,9905500],[46,6180000],[47,5405000],[48,5672000],[49,5566000],[50,6408000],[51,5677500],[52,6594000],[53,6059000],[54,6558000],[55,5817000],[56,5706100],[57,7813000],[58,6144000],[59,3170000]];
+       
+       $.ajax({
+        "url": " ajax/plot.php",
+        type: "post",
+        "data": {utility_code:$('#utility_code').val(),month:$('#month').val()},
+        beforeSend: function() {
+           // setting a timeout
+           $('#placeholder').html('loading...');
+           //document.location.href ="ajax/download.php";
+       },
+        "success": function(data) {
+            $('#placeholder').html('');
+            var obj = (JSON.parse(data));
+        if(data != undefined){
+            var data_amnt = obj[0];
+            var data_num = obj[1];
+            
+                $.plot($("#placeholder"),
+                [
+                    {
+                        data:data_amnt,                        
+                            label:"Total Amount",
+                            color:'#5ab99a'
+                        }
+                ],
+                {
+                    series: {
+                        lines: {
+                            show: true, 
+                            fill:true
+                        },
+                        points: {
+                            show: true
+                        }
+                    },
+                    grid:  { hoverable: true }, //important! flot.tooltip requires this
+                    tooltip: {
+                      show: true,
+                      xcontent: "%s | x: %x; y: %y",
+                      content: "%y"
+                    },
+               
+                    xaxis: {
+                    tickSize:1, 
+                    tickDecimals:0,  
+                    axisLabel: "Days in the Month", 
+                    },
+                        yaxis: {axisLabel: "Total Amount (Tsh)",
+                        xticks: 1,
+                        xtickSize: 500000,
+                        xheight: '140%',
+                        xtickDecimals:2,
+                        tickFormatter: function numberWithCommas(x) {
+                            return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+                      
+                        }, 
+                    }
+                },
+                     
+                
+                    
+                ); 
+                $.plot($("#numbers"),
+                [
+                    {data:data_num,lines:
+                        {show: true, fill:true}, points:{show: true},label:"Total Transactions",color:'#337ab7'}
+                    
+                ],
+                    {
+                        xaxis: {
+                        tickSize:1, 
+                        tickDecimals:0,  
+                        axisLabel: "Days in the Month", 
+                        },
+                        yaxis: {axisLabel: "Total Number of Transactions" }
+                    }
+                );
+                
+             
+        }// if not undefined with no data for that month
+    },
+        "error": function(res, status, xhr) {
+           alert('Err:' ); 
+        }
     });
+});
+
    
 
    

@@ -1082,6 +1082,7 @@ h2 {
 }
 .x_title h2 {
     margin: 5px 0 6px;
+    padding-top: 10px;
     float: left;
     display: block;
     text-overflow: ellipsis;
@@ -1728,13 +1729,13 @@ span.right {
     }
 }
 .tile_count .tile_stats_count .count {
-    font-size: 30px;
+    font-size: 25px;
     line-height: 47px;
     font-weight: 600
 }
 @media (min-width: 768px) {
     .tile_count .tile_stats_count .count {
-        font-size: 40px
+        font-size: 25px
     }
 }
 @media (min-width: 992px) and (max-width: 1100px) {
@@ -3408,7 +3409,7 @@ ul.project_files li a i {
     font-size: 26px
 }
 a.hiddenanchor {
-    display: none
+    xdisplay: none
 }
 .login_wrapper {
     right: 0px;
@@ -4301,3 +4302,25 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
       font-weight: 400;
       background: red;
   }
+  /*flotchart*/
+  #legend-container {
+    background-color: #fff;
+    padding: 2px;
+    margin-bottom: 8px;
+    border-radius: 3px 3px 3px 3px;
+    border: 1px solid #E6E6E6;
+    display: inline-block;
+    margin: 0 auto;
+}
+.flot-overlay{
+height:880px important!;
+}
+#demo-container{
+    height:880px important!;
+}
+td:nth-last-child(2) {
+    text-align: right;
+}
+td:nth-last-child(1) {
+    text-align: right;
+}

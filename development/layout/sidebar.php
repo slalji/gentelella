@@ -5,12 +5,15 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>                      
+                      <li><a href="index.php?page=transactions">Dashboard</a></li>                      
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Transactions <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Reports <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.php?page=transactions">Transactions</a></li>
+                      <li><a href="index.php?page=transactions">Daily</a></li>
+                      <li><a href="index.php?page=comparisons">Utility Comparison</a></li>
+                      <li><a href="index.php?page=comparisons_one">Comparison</a></li>
+                      <li><a href="index.php?page=vendors">Vendors</a></li>
                     </ul>
                   </li>
                  
